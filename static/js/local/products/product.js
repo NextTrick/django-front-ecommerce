@@ -12,11 +12,11 @@ function addProduct(){
     formData.append('measure_unit', document.getElementById('measure_unit').value);
     formData.append('category_product', document.getElementById('category_product').value);
 
-    fetchCreateUpdate('products/products/', formData, false, true);
+    fetchCreateUpdate('products/product/', formData, false, true);
 }
 
 function updateProduct(){
-    let url = 'products/products/' + update_id + "/"
+    let url = 'products/product/' + update_id + "/"
     let formData = new FormData();
     
     formData.append('name', document.getElementById('id_name').value);
@@ -103,7 +103,7 @@ function loadMeasureUnits(id=0){
 window.actionEvents = {
     'click .btn-secondary': function(e, value, row, index){
         update_id = row.id;
-        fetch(base_API + 'products/products/'+row.id+"/",{
+        fetch(base_API + 'products/product/'+row.id+"/",{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -128,6 +128,6 @@ window.actionEvents = {
         });
     },
     'click .btn-danger': function(e, value, row, index){
-        fetchDelete('products/products/' + row.id + "/");
+        fetchDelete('products/product/' + row.id + "/");
     }
 }

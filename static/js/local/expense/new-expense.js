@@ -24,7 +24,7 @@ function searchSupplier(){
         let found = document.getElementById('supplier_found');
         found.classList.remove('hide');
         
-        fetch(base_API + 'expense/expense/search_supplier/?ruc_or_business_name='+ruc,{
+        fetch(base_API + 'expenses/expense/searchSupplier/?ruc_or_business_name='+ruc,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,11 +40,11 @@ function searchSupplier(){
         .then(function(data){
             console.log(data);
             if(error){
-                alert(data.mensaje);
+                alert(data.message);
             }else{
                 showForm();
                 id_supplier = data.id;
-                document.getElementById('id_business_name').innerHTML = data.business_name;
+                document.getElementById('id_business_name').innerHTML = data.businessName;
                 document.getElementById('ruc').innerHTML = data.ruc;
                 document.getElementById('id_address').innerHTML = data.address;
             }
@@ -58,8 +58,8 @@ function searchSupplier(){
 
 }
 
-function loadPaymentType(){
-    fetch(base_API + 'expense/expense/get_payment_types/',{
+function loadPaymentType() {
+    fetch(base_API + 'expenses/expense/getPaymentTypes/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -87,8 +87,8 @@ function loadPaymentType(){
     });
 }
 
-function loadVoucherType(){
-    fetch(base_API + 'expense/expense/get_vouchers/',{
+function loadVoucherType() {
+    fetch(base_API + 'expenses/expense/getVouchers/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ function loadVoucherType(){
 }
 
 function loadProducts(){
-    fetch(base_API + 'expense/expense/get_products/',{
+    fetch(base_API + 'expenses/expense/getProducts/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ function loadProducts(){
 function addNewSupplier(){
     let data = {
         'ruc': document.getElementById('new_ruc').value,
-        'business_name': document.getElementById('new_business_name').value,
+        'businessName': document.getElementById('new_business_name').value,
         'address': document.getElementById('new_address').value,
         'phone': document.getElementById('new_phone').value,
         'email': document.getElementById('new_email').value
@@ -161,7 +161,7 @@ function addNewSupplier(){
     }
     temp_body = JSON.stringify(data)
 
-    fetch(base_API + 'expense/expense/new_suplier/',{
+    fetch(base_API + 'expenses/expense/newSupplier/',{
         method: 'POST',
         headers: temp_headers,
         body: temp_body
@@ -180,7 +180,7 @@ function addNewSupplier(){
             id_supplier = data.supplier.id;
             let found = document.getElementById('supplier_found');
             found.classList.remove('hide');
-            document.getElementById('id_business_name').innerHTML = data.supplier.business_name;
+            document.getElementById('id_business_name').innerHTML = data.supplier.businessName;
             document.getElementById('ruc').innerHTML = data.supplier.ruc;
             document.getElementById('id_address').innerHTML = data.supplier.address;
             //alert(data.message);
@@ -197,13 +197,13 @@ function addNewSupplier(){
 function addNewExpense(){
     let data = {
         'supplier': id_supplier,
-        'voucher_number': document.getElementById('voucher_number').value,
+        'voucherNumber': document.getElementById('voucher_number').value,
         'date': document.getElementById('date').value,
         'product': document.getElementById('product').value,
         'voucher': document.getElementById('voucher').value,
-        'payment_type': document.getElementById('payment_type').value,
+        'paymentType': document.getElementById('payment_type').value,
         'quantity': document.getElementById('quantity').value,
-        'unit_price': document.getElementById('unit_price').value,
+        'unitPrice': document.getElementById('unit_price').value,
         'total': document.getElementById('total').value
     };
 
@@ -214,7 +214,7 @@ function addNewExpense(){
     }
     temp_body = JSON.stringify(data)
 
-    fetch(base_API + 'expense/expense/',{
+    fetch(base_API + 'expenses/expense/',{
         method: 'POST',
         headers: temp_headers,
         body: temp_body
