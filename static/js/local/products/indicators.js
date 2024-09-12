@@ -18,7 +18,7 @@ function updateIndicator(){
 }
 
 function loadCategories(id=0){
-    fetch(base_API + 'products/category-products/get_categories/',{
+    fetch(base_API + 'products/category/getCategories/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

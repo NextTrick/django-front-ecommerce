@@ -29,7 +29,7 @@ function updateProduct(){
 }
 
 function loadCategories(id=0){
-    fetch(base_API + 'products/category-products/get_categories/',{
+    fetch(base_API + 'products/category/getCategories/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function loadCategories(id=0){
 }
 
 function loadMeasureUnits(id=0){
-    fetch(base_API + 'products/measure-unit/get_measure_units/',{
+    fetch(base_API + 'products/measure-unit/getMeasureUnits/',{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
